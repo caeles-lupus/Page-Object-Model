@@ -39,4 +39,4 @@ class ProductPage(BasePage):
 
     def check_succedd(self):
         msg_succed = self.browser.find_element(*ProductPageLocators.MESSAGE_SUCCESS).text
-        assert self.name_product in msg_succed, "The item has not been added to the basket!"
+        assert self.name_product == msg_succed, "The item has not been added to the basket!"
