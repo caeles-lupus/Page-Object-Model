@@ -43,8 +43,16 @@ class BasePage:
             WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
         except TimeoutException:
             return True
-
         return False
+
+    # ждем появления элемента
+    def is_element_present_with_waiting(self, how, what, timeout=4):
+        try:
+            WebDriverWait(self.browser, timeout). \
+                until(EC.presence_of_element_located((how, what)))
+        except TimeoutException:
+            return False
+        return True
 
     # элемент пропадает через некоторое время
     def is_disappeared(self, how, what, timeout=4):
